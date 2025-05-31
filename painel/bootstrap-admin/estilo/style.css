@@ -1,0 +1,161 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+}
+button {
+    margin-right: 20px;
+    border-radius: 12px;
+    padding: 8px 32px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    animation: buttonFadeIn 0.5s ease-in-out;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease; /* Added animation for smoother scaling */
+}
+
+button:active {
+    background-color: #003f7f;
+    transform: scale(0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.navbar-brand {
+    font-size: 26px;
+    font-weight: bold;
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.navbar-brand:hover {
+    color: #0056b3;
+    text-decoration: none;
+    background-color: rgba(0, 123, 255, 0.1);
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes buttonFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.navbrand-name{
+    font-size: 30px !important;
+    font-weight: bold;
+}
+
+.bg-body-tertiary{
+    padding: 20px  !important;
+}
+
+aside{
+    position: absolute;
+    top: 0;
+    width: 300px;
+    height: 100%;
+}
+
+.itens-menu {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    z-index: 1000;
+}
+
+.container-itens {
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.dropdown-menu-animated {
+    animation: dropdownFadeIn 0.3s ease-in-out;
+}
+
+@keyframes dropdownFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #0056b3;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+
+@media (max-width: 1919px) {
+    aside{
+        display: none;
+    }
+}
+
+
+
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .navbrand-name {
+        font-size: 24px !important;
+    }
+
+    button {
+        margin-right: 10px;
+        margin-top: 10px;
+    }
+
+    .bg-body-tertiary {
+        padding: 10px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbrand-name {
+        font-size: 20px !important;
+    }
+
+    button {
+        margin-right: 5px;
+        margin-top: 5px;
+    }
+
+    .bg-body-tertiary {
+        padding: 5px !important;
+    }
+}

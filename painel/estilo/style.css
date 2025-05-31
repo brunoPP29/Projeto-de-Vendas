@@ -1,0 +1,555 @@
+/* Variáveis CSS personalizadas - Tema Escuro */
+:root {
+  /* Gradientes escuros ou cores sólidas escuras */
+  --primary-gradient: linear-gradient(135deg, #1a2a6c, #0d1536); /* Azul escuro */
+  --secondary-gradient: linear-gradient(135deg, #495057, #212529); /* Cinza escuro */
+  --warning-gradient: linear-gradient(135deg, #ffc107, #e0a800); /* Mantido para destaque */
+  --success-gradient: linear-gradient(135deg, #28a745, #1c7430); /* Verde escuro */
+  --danger-gradient: linear-gradient(135deg, #dc3545, #b02a37); /* Vermelho escuro */
+  
+  /* Cores base do tema escuro */
+  --bg-color: #121212; /* Fundo principal quase preto */
+  --surface-color: #1e1e1e; /* Cor de superfície para cards, etc. */
+  --text-color: #e0e0e0; /* Cor de texto principal (claro) */
+  --text-secondary-color: #a0a0a0; /* Cor de texto secundário */
+  --border-color: #333333; /* Cor de borda sutil */
+  --primary-color-focus: #6c8cff; /* Cor de foco mais clara */
+
+  /* Mantendo variáveis estruturais */
+  --border-radius: 8px;
+  --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  --transition-speed: 0.3s;
+  --font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Estilos gerais - Tema Escuro */
+body {
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+
+/* Navbar principal - Tema Escuro */
+.nav-bar1 {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+/* Estilo base da navbar - Tema Escuro */
+.navbar {
+  background: var(--surface-color) !important; /* Fundo da navbar escuro */
+  padding: 15px 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Título da navbar (Painel BOOTSTRAP) - Tema Escuro */
+.navbar-brand {
+  color: #ffffff !important; /* Texto branco */
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+  padding: 8px 16px;
+  border-radius: var(--border-radius);
+  background: rgba(255, 255, 255, 0.05); /* Fundo sutilmente mais claro */
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: all var(--transition-speed);
+  margin-right: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efeito de brilho no título ao passar o mouse - Ajustado para escuro */
+.navbar-brand:before {
+  background: rgba(255, 255, 255, 0.15); /* Brilho mais visível */
+}
+
+.navbar-brand:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Botão de toggle para mobile - Tema Escuro */
+.navbar-toggler {
+  border: none !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: var(--border-radius) !important;
+  padding: 8px 12px !important;
+  transition: all var(--transition-speed) !important;
+}
+
+.navbar-toggler:hover {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-2px);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* Container de itens da navbar */
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Dropdown containers */
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Botões dropdown - Tema Escuro */
+.dropdown .btn-secondary {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: none !important;
+  color: var(--text-color) !important;
+  font-weight: 500;
+  padding: 10px 18px !important;
+  border-radius: var(--border-radius) !important;
+  transition: all var(--transition-speed) !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Dropdown menus - Tema Escuro */
+.dropdown-menu {
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--border-radius) !important;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+  padding: 8px !important;
+  margin-top: 10px !important;
+  background: var(--surface-color) !important; /* Fundo escuro para dropdown */
+  animation: fadeInDown 0.3s ease-in-out !important;
+  min-width: 200px !important;
+}
+
+/* Itens do dropdown - Tema Escuro */
+.dropdown-item {
+  padding: 10px 15px !important;
+  border-radius: var(--border-radius) !important;
+  transition: all var(--transition-speed) !important;
+  color: var(--text-color) !important; /* Texto claro */
+  font-weight: 500 !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important; /* Hover sutil */
+  color: #ffffff !important; /* Texto branco no hover */
+  transform: translateX(5px);
+}
+
+/* Ícones do dropdown - Tema Escuro */
+.dropdown-item:before {
+  font-family: "bootstrap-icons";
+  margin-right: 8px;
+  opacity: 0.8; /* Levemente mais visível */
+  color: var(--text-secondary-color);
+}
+
+/* Container para itens adicionais da navbar */
+.container-itens {
+  display: flex;
+  align-items: center;
+}
+
+.itens-menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Botão "Como Funciona?" - Tema Escuro */
+.btn-primary {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: var(--text-color) !important;
+  font-weight: 500 !important;
+  padding: 10px 18px !important;
+  border-radius: var(--border-radius) !important;
+  transition: all var(--transition-speed) !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Botão de logout - Tema Escuro */
+.loggout .btn-danger {
+  background: var(--danger-gradient) !important; /* Usando gradiente escuro */
+  border: none !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all var(--transition-speed) !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 0 !important;
+}
+
+.loggout .btn-danger:hover {
+  background: linear-gradient(135deg, #e84a5f, #c82333) !important; /* Hover mais claro */
+  transform: translateY(-2px) rotate(5deg);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.loggout .btn-danger img {
+  filter: brightness(0) invert(1); /* Inverte a cor do ícone para branco */
+}
+
+/* Responsividade da navbar - Tema Escuro */
+@media (max-width: 992px) {
+  .navbar-collapse {
+    background: rgba(30, 30, 30, 0.95); /* Fundo escuro translúcido */
+    border-radius: var(--border-radius);
+    padding: 15px;
+    margin-top: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+
+/* Offcanvas para "Como Funciona?" - Tema Escuro */
+.offcanvas {
+  background-color: var(--surface-color);
+  color: var(--text-color);
+  border-radius: 0 0 0 var(--border-radius);
+  box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.offcanvas-header {
+  background: var(--primary-gradient); /* Gradiente escuro */
+  color: white;
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.btn-close {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  padding: 5px;
+  filter: invert(1) grayscale(100%) brightness(200%); /* Ícone branco */
+}
+
+.offcanvas-body a {
+  color: var(--primary-color-focus); /* Link com cor de destaque */
+}
+
+/* Tabs dentro do offcanvas - Tema Escuro */
+.nav-pills .nav-link {
+  border-radius: var(--border-radius);
+  padding: 10px 15px;
+  margin-bottom: 5px;
+  transition: all var(--transition-speed);
+  color: var(--text-secondary-color);
+}
+
+.nav-pills .nav-link.active {
+  background: var(--primary-gradient);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+.nav-pills .nav-link:not(.active):hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-color);
+  transform: translateX(3px);
+}
+
+.tab-content {
+  padding: 15px;
+  border-left: 1px solid var(--border-color);
+}
+
+.tab-pane h3 {
+  margin-bottom: 15px;
+  color: var(--primary-color-focus);
+  font-weight: 600;
+}
+
+/* Cards personalizados - Tema Escuro */
+.card {
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  margin-bottom: 20px;
+  background-color: var(--surface-color); /* Fundo escuro */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  border-color: #555;
+}
+
+.card-header {
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--border-color);
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+/* Fundos de card específicos */
+.bg-primary {
+  background: var(--primary-gradient) !important;
+  color: white !important;
+}
+
+.bg-secondary {
+  background: var(--secondary-gradient) !important;
+  color: white !important;
+}
+
+.bg-warning {
+  background: var(--warning-gradient) !important;
+  color: #121212 !important; /* Texto escuro para contraste */
+}
+
+.text-dark {
+  color: #121212 !important; /* Garante texto escuro em fundos claros como warning */
+}
+
+.text-white {
+  color: #ffffff !important;
+}
+
+.card-body {
+  padding: 20px;
+  color: var(--text-secondary-color);
+}
+
+/* Formulários - Tema Escuro */
+.form-label {
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--text-secondary-color);
+}
+
+.form-control, .form-select {
+  border-radius: var(--border-radius);
+  padding: 12px 15px;
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-speed);
+  background-color: #2a2a2a; /* Fundo do input escuro */
+  color: var(--text-color) !important; /* Texto claro */
+}
+
+.form-control::placeholder {
+  color: var(--text-secondary-color);
+  opacity: 0.7;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--primary-color-focus);
+  box-shadow: 0 0 0 0.2rem rgba(108, 140, 255, 0.3); /* Sombra de foco mais clara */
+  background-color: #333; /* Fundo ligeiramente mais claro no foco */
+}
+
+.input-group-text {
+  background-color: #333;
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  border: 1px solid var(--border-color);
+  border-right: none;
+  color: var(--text-secondary-color);
+}
+
+/* Ícones dentro de input-group */
+.input-group-text i {
+  color: var(--text-secondary-color);
+}
+
+/* Botões personalizados - Tema Escuro */
+.btn {
+  border-radius: var(--border-radius);
+  padding: 10px 20px;
+  font-weight: 500;
+  transition: all var(--transition-speed);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border: none; /* Remover borda padrão */
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Botão primário (usado no 'Como Funciona?') */
+.btn-primary {
+  background: var(--primary-gradient) !important;
+  color: white !important;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #5a7bff, #3551c2) !important; /* Hover mais claro */
+}
+
+/* Botão secundário (usado nos dropdowns da navbar) */
+.btn-secondary {
+  background: var(--secondary-gradient) !important;
+  color: white !important;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, #7c858d, #596067) !important;
+}
+
+.btn-success {
+  background: var(--success-gradient);
+  color: white;
+}
+
+.btn-success:hover {
+  background: linear-gradient(135deg, #38b755, #2c9848);
+}
+
+.btn-warning {
+  background: var(--warning-gradient);
+  color: #121212; /* Texto escuro para contraste */
+}
+
+.btn-warning:hover {
+  background: linear-gradient(135deg, #ffd137, #f0b810);
+}
+
+.btn-danger {
+  background: var(--danger-gradient);
+  color: white;
+}
+
+.btn-danger:hover {
+  background: linear-gradient(135deg, #e84a5f, #c82333);
+}
+
+.btn-sm {
+  padding: 5px 10px;
+  font-size: 0.875rem;
+}
+
+/* Listagem de itens - Tema Escuro */
+.border {
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--border-radius);
+  transition: all var(--transition-speed);
+  background-color: var(--surface-color); /* Fundo escuro */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.border:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  border-color: #555 !important;
+}
+
+.text-muted {
+  color: var(--text-secondary-color) !important;
+}
+
+/* Alertas personalizados - Tema Escuro */
+.alert {
+  border-radius: var(--border-radius);
+  border: none;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.alert-success {
+  background-color: rgba(40, 167, 69, 0.15); /* Fundo sutil */
+  border-left: 4px solid #28a745;
+  color: #a3d9b1; /* Texto claro */
+}
+
+.alert-warning {
+  background-color: rgba(255, 193, 7, 0.15);
+  border-left: 4px solid #ffc107;
+  color: #ffe58f; /* Texto claro */
+}
+
+.alert-danger {
+  background-color: rgba(220, 53, 69, 0.15);
+  border-left: 4px solid #dc3545;
+  color: #f1b0b7; /* Texto claro */
+}
+
+/* Ícones dentro de alertas */
+.alert i {
+  opacity: 0.8;
+}
+
+/* Imagens - Tema Escuro */
+.rounded-circle {
+  border: 3px solid #444; /* Borda escura */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all var(--transition-speed);
+}
+
+.rounded-circle:hover {
+  transform: scale(1.05);
+  border-color: #666;
+}
+
+.img-thumbnail {
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  padding: 5px;
+  transition: all var(--transition-speed);
+  background-color: #2a2a2a; /* Fundo escuro para thumbnail */
+}
+
+.img-thumbnail:hover {
+  transform: scale(1.03);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  border-color: #555;
+}
+
+/* Animações gerais */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsividade geral */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .btn {
+    padding: 8px 16px;
+  }
+  
+  .card-header {
+    padding: 12px 15px;
+  }
+  
+  .card-body {
+    padding: 15px;
+  }
+}
