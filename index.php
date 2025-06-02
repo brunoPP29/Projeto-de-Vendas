@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <img src="https://via.placeholder.com/600x300" class="img-fluid rounded banner-img" alt="Banner promocional">
+                    <img src="" class="img-fluid rounded banner-img" alt="Banner promocional">
                 </div>
             </div>
         </div>
