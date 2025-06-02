@@ -14,7 +14,7 @@
         define('USER', 'root');
         define('PASSWORD', '');
         define('DATABASE', 'vendasData');
-        define('BASE_DIR_PAINEL',__DIR__.'/projeto_vendas');
+        define('BASE_DIR_PAINEL',__DIR__.'/painel');
 
 
 

@@ -1,3 +1,17 @@
+<?php
+  // Defina o caminho do painel se a constante não estiver definida
+  if (!defined('INCLUDE_PATH_PAINEL')) {
+    define('INCLUDE_PATH_PAINEL', '/projeto_vendas/painel/'); // ajuste o caminho conforme necessário
+  }
+
+  if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
+    //ok
+  } else {
+    echo '<script>window.location.href = "'.INCLUDE_PATH_PAINEL.'";</script>';
+    exit();
+  }
+
+?>
 <div class="container mt-5">
   <div class="card shadow-lg">
     <div class="card-header bg-primary text-white">

@@ -49,6 +49,15 @@ class Painel{
             <button style="margin: 0px !important;" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
         </div>';
     }
+        public static function uploadFileBanner($file){
+            $formatoArquivo = explode('.',$file['name']);
+            $imagemNome = uniqid().'.'.$formatoArquivo[count($formatoArquivo) - 1];
+            if(move_uploaded_file($file['tmp_name'], BASE_DIR_PAINEL.'/uploadsBanner/'.$imagemNome)){
+                return $imagemNome; 
+            } else {
+                return false;
+            }
+        }
     
 
 }
