@@ -29,7 +29,7 @@
 
       if (isset($_POST['acao'])) {
         $quem = $_POST['quem'];
-        echo '<script>window.location.href="'.INCLUDE_PATH_PAINEL.'/pages/editar-planos?id='.$quem.'";</script>';
+        echo '<script>window.location.href="'.INCLUDE_PATH_PAINEL.'pages/editar-planos?id='.$quem.'";</script>';
       }
       
       

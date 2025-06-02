@@ -171,6 +171,7 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-top: 15px;
 }
 
 /* Botão "Como Funciona?" - Tema Escuro */
@@ -227,6 +228,9 @@ body {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }
+  .itens-menu {
+  margin-top: 15px;
+}
 }
 
 /* Offcanvas para "Como Funciona?" - Tema Escuro */
@@ -498,6 +502,15 @@ body {
   opacity: 0.8;
 }
 
+.list-group-item {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 10px 15px;
+  color: var(--text-secondary-color);
+  transition: all var(--transition-speed);
+}
+
 /* Imagens - Tema Escuro */
 .rounded-circle {
   border: 3px solid #444; /* Borda escura */
@@ -532,6 +545,15 @@ body {
   to {
     opacity: 1;
   }
+}
+
+@media (max-width: 1200px) {
+
+  .dropdown{
+    width: 100% !important;
+    display: block !important;
+  }
+  
 }
 
 /* Responsividade geral */

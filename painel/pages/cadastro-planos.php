@@ -36,7 +36,7 @@
         <label for="planoValor" class="form-label">Valor</label>
         <div class="input-group">
           <span class="input-group-text"><i class="bi bi-currency-dollar"></i></span>
-          <input name="valor" type="text" class="form-control" id="planoValor" placeholder="Digite o valor do plano" required>
+          <input name="valor" type="number" class="form-control" id="planoValor" placeholder="Digite o valor do plano" required>
         </div>
       </div>
 

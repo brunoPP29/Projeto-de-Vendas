@@ -91,65 +91,42 @@
             </div>
             <div class="row">
                 <!-- Plano Básico -->
+                 <?php
+                    $sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.planos`");
+                    $sql->execute();
+                    $planos = $sql->fetchAll();
+                    if (!$planos) {
+                        echo '<div class="alert alert-danger">Nenhum plano encontrado!</div>';
+                        exit;
+                    }else {
+                        foreach ($planos as $key => $value) {
+                            # code...
+                    
+                 
+                 ?>
                 <div class="col-md-4 mb-4">
                     <div class="card h-100 plano-card">
                         <div class="card-header text-center py-3">
-                            <h3 class="plano-titulo">Básico</h3>
+                            <h3 class="plano-titulo"><?php echo $value['nome']; ?></h3>                       
                         </div>
                         <div class="card-body d-flex flex-column">
-                            <h4 class="card-price text-center">R$ 49,90<span>/mês</span></h4>
+                            <h4 class="card-price text-center">R$
+                                <?php echo number_format($value['valor'], 2, ',', '.'); ?>    
+                            
+                            
+                            <span>/vitalício</span></h4>
                             <ul class="list-unstyled mt-3 mb-4">
-                                <li><i class="fas fa-check me-2 text-primary"></i> 10 produtos</li>
-                                <li><i class="fas fa-check me-2 text-primary"></i> Suporte básico</li>
-                                <li><i class="fas fa-check me-2 text-primary"></i> Relatórios mensais</li>
-                                <li><i class="fas fa-times me-2 text-muted"></i> Análise avançada</li>
+                                <li><i class="fas fa-check me-2 text-primary"></i><?php echo $value['item1']; ?></li>
+                                <li><i class="fas fa-check me-2 text-primary"></i><?php echo $value['item2']; ?></li>
+                                <li><i class="fas fa-check me-2 text-primary"></i><?php echo $value['item3']; ?></li>
+                                <li><i class="fas fa-check me-2 text-primary"></i><?php echo $value['item4']; ?></li>
                             </ul>
                             <a href="#" class="btn btn-outline-primary mt-auto">Contratar</a>
                         </div>
                     </div>
                 </div>
-                <!-- Plano Profissional -->
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 plano-card plano-destaque">
-                        <div class="card-header text-center py-3">
-                            <h3 class="plano-titulo">Profissional</h3>
-                            <span class="badge bg-primary">Mais Popular</span>
-                        </div>
-                        <div class="card-body d-flex flex-column">
-                            <h4 class="card-price text-center">R$ 99,90<span>/mês</span></h4>
-                            <ul class="list-unstyled mt-3 mb-4">
-                                <li><i class="fas fa-check me-2 text-primary"></i> 50 produtos</li>
-                                <li><i class="fas fa-check me-2 text-primary"></i> Suporte prioritário</li>
-                                <li><i class="fas fa-check me-2 text-primary"></i> Relatórios semanais</li>
-                                <li><i class="fas fa-check me-2 text-primary"></i> Análise básica</li>
-                            </ul>
-                            <a href="#" class="btn btn-primary mt-auto">Contratar</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Plano Enterprise -->
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 plano-card">
-                        <div class="card-header text-center py-3">
-                            <h3 class="plano-titulo">Enterprise</h3>
-                        </div>
-                        <div class="card-body d-flex flex-column">
-                            <h4 class="card-price text-center">R$ 199,90<span>/mês</span></h4>
-                            <ul class="list-unstyled mt-3 mb-4">
-                                <li><i class="fas fa-check me-2 text-primary"></i> Produtos ilimitados</li>
-                                <li><i class="fas fa-check me-2 text-primary"></i> Suporte 24/7</li>
-                                <li><i class="fas fa-check me-2 text-primary"></i> Relatórios diários</li>
-                                <li><i class="fas fa-check me-2 text-primary"></i> Análise avançada</li>
-                            </ul>
-                            <a href="#" class="btn btn-outline-primary mt-auto">Contratar</a>
-                        </div>
-                    </div>
-                </div>
+                <?php } } ?>
             </div>
-            <div class="text-center mt-4">
-                <a href="#" class="btn btn-outline-dark btn-lg">Ver mais planos</a>
-            </div>
-        </div>
     </section>
 
     <!-- Seção de contato -->

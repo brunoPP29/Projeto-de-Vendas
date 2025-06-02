@@ -7,9 +7,9 @@ class Painel{
                 if (file_exists('/opt/lampp/htdocs/projeto_vendas/painel/pages/'.$url[1].'.php')) {
                     include('/opt/lampp/htdocs/projeto_vendas/painel/pages/'.$url[1].'.php');
                 }else {
-                    
                 }
             }else {
+                include('/opt/lampp/htdocs/projeto_vendas/painel/pages/welcome.php');
             }
         }
         public static function logado(){
