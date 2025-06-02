@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pereira Web</title>
+    <title>PereiraCode</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -39,7 +39,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    <span class="brand-text">Pereira<span class="text-primary">Web</span></span>
+                    <span class="brand-text">   <span>&lt;</span>Pereira<span class="text-primary">Code</span></span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
                     <span class="navbar-toggler-icon"></span>
@@ -64,23 +64,30 @@
     </header>
 
     <!-- Banner principal -->
+     <?php  $sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.banner`");  $sql->execute(); $info = $sql->fetchAll(); 
+    if (!$info) {
+        echo '<div class="alert alert-danger">Nenhum banner encontrado!</div>';
+        exit;
+    } else {
+        foreach ($info as $key => $value) {
+     ?>
     <section class="banner">
         <div class="container py-4">
             <div class="row">
                 <div class="col-md-6 d-flex flex-column justify-content-center">
-                    <h1 class="display-5 fw-bold">Soluções completas para seu negócio</h1>
-                    <p class="lead">Encontre os melhores produtos e serviços com preços imbatíveis.</p>
+                    <h1 class="display-5 fw-bold"><?php  echo $value['title']   ?></h1>
+                    <p class="lead"><?php  echo $value['subtitle']   ?></p>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                        <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Comprar agora</button>
-                        <button type="button" class="btn btn-outline-dark btn-lg px-4">Saiba mais</button>
+                        <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Contratar agora</button>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <img src="" class="img-fluid rounded banner-img" alt="Banner promocional">
+                    <img src="./painel/uploadsBanner/<?php  echo $value['image']   ?>" class="img-fluid rounded banner-img" alt="Banner promocional">
                 </div>
             </div>
         </div>
     </section>
+    <?php } } ?>
 
     <!-- Seção de planos -->
     <section class="planos py-5">

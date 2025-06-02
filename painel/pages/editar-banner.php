@@ -51,7 +51,7 @@
         <div class="mb-3">
           <label for="title" class="form-label">Título</label>
           <div class="input-group">
-            <span class="input-group-text"><i class="bi bi-person"></i></span>
+            <span class="input-group-text"><i class="bi bi-chat-square-quote"></i></span>
             <input type="text" class="form-control" id="titulo" name="title" value="<?php echo $banner[0]['title']; ?>" required>
           </div>
         </div>
@@ -59,7 +59,7 @@
         <div class="mb-3">
           <label for="subtitle" class="form-label">Subtítulo</label>
           <div class="input-group">
-            <span class="input-group-text"><i class="bi bi-key"></i></span>
+            <span class="input-group-text"><i class="bi bi-chat-quote"></i></span>
             <input type="text" class="form-control" id="subtitle" name="subtitle" value="<?php echo $banner[0]['subtitle']; ?>" required>
           </div>
         </div>
