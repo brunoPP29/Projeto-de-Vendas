@@ -1,13 +1,4 @@
-<?php
-  include('/opt/lampp/htdocs/projeto_vendas/config.php');
-  if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
-    //ok
-  } else {
-    echo '<script>window.location.href = "'.INCLUDE_PATH_PAINEL.'";</script>';
-    exit();
-  }
 
-?>
 <div class="container mt-5">
   <div class="card shadow">
     <div class="card-header bg-secondary text-white">
@@ -98,7 +89,7 @@
       } else {
         Painel::alertErro('Erro ao deletar Login!');
       }
-      echo '<script>window.location.href="'.INCLUDE_PATH_PAINEL.'listar-login";</script>';
+      echo '<script>window.location.href="'.INCLUDE_PATH_PAINEL.'pages/listar-login";</script>';
       exit;
     }
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 
-    include('config.php');
+include('config.php');
 ?>
 <html lang="pt-br">
 <head>
@@ -22,15 +22,14 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6">
-                        <div class="header-contact d-flex align-items-center">
-                            <span class="me-3"><i class="fas fa-phone-alt me-2"></i> (11) 9999-9999</span>
-                            <span><i class="fas fa-envelope me-2"></i> exemplo@gmail.com</span>
-                        </div>
                     </div>
                     <div class="col-md-6 text-end">
                         <div class="header-social">
-                            <a href="#" class="me-2"><i class="fab fa-whatsapp"></i></a>
-                            <a href="#" class="me-2"><i class="fab fa-instagram"></i></a>
+                            <?php $sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.contatoInfo`"); $sql->execute(); $infos = $sql->fetchAll(); foreach ($infos as $key => $info) {
+                                # code...
+                            }?>
+                            <a href="https://wa.me/<?php echo $info['zap']; ?>" class="me-2"><i class="fab fa-whatsapp"></i></a>
+                            <a href="https://instagram.com/<?php echo trim(str_replace('@', '', $info['insta'])); ?>" class="me-2"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -48,9 +47,6 @@
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contato</a>
                         </li>
                     </ul>
                     <div class="d-flex align-items-center">
@@ -70,9 +66,44 @@
         exit;
     } else {
         foreach ($info as $key => $value) {
-     ?>
+            ?>
     <section class="banner">
         <div class="container py-4">
+            <?php
+                if (isset($_POST['acao'])) {
+                    $email = $_POST['email'];
+                    $assunto = $_POST['assunto'];
+                    $message = $_POST['message'];
+            
+                    $sql = MySql::conectar()->prepare("INSERT INTO `tb_admin.messages` VALUES (null,?,?,?)");
+                    $sql->execute(array($email, $assunto, $message));
+                if ($sql->rowCount() == 1) {
+                    
+                    echo '
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+  <div id="successToast" class="toast align-items-center text-bg-success border-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        Mensagem enviada com sucesso!
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>    
+</div>
+<script>
+  var toastEl = document.getElementById("successToast");
+  if (toastEl) {
+    var toast = new bootstrap.Toast(toastEl);
+    toast.show();
+  }
+</script>
+';
+                }
+            }
+                    # code...
+                
+            
+            ?>
             <div class="row">
                 <div class="col-md-6 d-flex flex-column justify-content-center">
                     <h1 class="display-5 fw-bold"><?php  echo $value['title']   ?></h1>
@@ -81,7 +112,7 @@
                         <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Contratar agora</button>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div style="margin-top: 15px;" class="col-md-6">
                     <img src="./painel/uploadsBanner/<?php  echo $value['image']   ?>" class="img-fluid rounded banner-img" alt="Banner promocional">
                 </div>
             </div>
@@ -143,48 +174,53 @@
                 <div class="col-lg-6">
                     <h2 class="section-title">Entre em Contato</h2>
                     <p class="mb-4">Estamos prontos para atender suas necessidades e responder suas dúvidas.</p>
-                    <form>
+                    <form method="post">
                         <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Nome completo">
                         </div>
                         <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="Email">
+                            <label for="email" class="form-label">Email</label>
+                            <input name="email" type="email" class="form-control" placeholder="Email" required>
                         </div>
                         <div class="mb-3">
-                            <select class="form-select">
+                        <label for="email" class="form-label">Qual o assunto?</label>
+                            <select name="assunto" class="form-select">
                                 <option selected>Selecione o assunto</option>
                                 <option>Dúvidas sobre planos</option>
                                 <option>Suporte técnico</option>
-                                <option>Vendas</option>
                                 <option>Outros</option>
                             </select>
                         </div>
                         <div class="mb-3">
-                            <textarea class="form-control" rows="4" placeholder="Sua mensagem"></textarea>
+                        <label for="email" class="form-label">Sua mensagem</label>
+                            <textarea name="message" class="form-control" rows="4" placeholder="Sua mensagem"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+                        <button name="acao" type="submit" class="btn btn-primary">Enviar mensagem</button>
                     </form>
                 </div>
+
+
+
+
+                            <?php $sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.contatoInfo`");
+                    $sql->execute();
+                    $contatoInfo = $sql->fetchAll();
+                    if (!$contatoInfo) {
+                        echo '<div class="alert alert-danger">Nenhuma informação de contato encontrada!</div>';
+                        exit;
+                    } else {
+                        foreach ($contatoInfo as $key => $info) {
+                            ?>
                 <div class="col-lg-6 mt-4 mt-lg-0">
                     <div class="contato-info p-4 h-100">
                         <h3>Informações de Contato</h3>
                         <p class="mb-4">Estamos disponíveis para atendê-lo pelos seguintes canais:</p>
                         <div class="d-flex mb-3">
                             <div class="contato-icon me-3">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <h5>Endereço</h5>
-                                <p>Av. Paulista, 1000 - São Paulo, SP</p>
-                            </div>
-                        </div>
-                        <div class="d-flex mb-3">
-                            <div class="contato-icon me-3">
                                 <i class="fas fa-phone-alt"></i>
                             </div>
                             <div>
-                                <h5>Telefone</h5>
-                                <p>(11) 9999-9999</p>
+                                <h5>Whatsapp</h5>
+                                <a style="color: var(--text-muted); text-decoration: underline;" href="https://wa.me/<?php echo $info['zap']; ?>">Clique aqui para enviar uma menagem!</a>
                             </div>
                         </div>
                         <div class="d-flex mb-3">
@@ -193,69 +229,47 @@
                             </div>
                             <div>
                                 <h5>Email</h5>
-                                <p>contato@vendamax.com.br</p>
+                                <a style="color: var(--text-muted); text-decoration: underline;" href="mailto:<?php echo $info['email'];    ?>" >Envie um email aqui</a>
                             </div>
                         </div>
-                        <div class="social-media mt-4">
-                            <a href="#" class="me-2"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="me-2"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="me-2"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="me-2"><i class="fab fa-linkedin-in"></i></a>
+                            <div class="d-flex mb-3">
+                                <div class="contato-icon me-3">
+                                    <i class="fab fa-instagram"></i>
+                                </div>
+                                <div>
+                                    <h5>Instagram</h5>
+                                    <a style="color: var(--text-muted); text-decoration: underline;" href="https://instagram.com/<?php echo trim(str_replace('@', '', $info['insta'])); ?>">Siga-nos no Instagram</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
+    <?php     } }  ?>
     <!-- Footer -->
     <footer class="footer py-4">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4 mb-lg-0">
-                    <h5>VendaMax</h5>
-                    <p>Soluções completas para seu negócio online. Desde 2010 ajudando empresas a crescerem no mercado digital.</p>
-                </div>
-                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
-                    <h5>Links Rápidos</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Produtos</a></li>
-                        <li><a href="#">Planos</a></li>
-                        <li><a href="#">Contato</a></li>
-                    </ul>
+                    <h5>PereiraCode</h5>
+                    <p>Criando sites para a sua necessidade e com a cara da sua empresa!</p>
                 </div>
                 <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
                     <h5>Suporte</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Central de Ajuda</a></li>
-                        <li><a href="#">Tutoriais</a></li>
-                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="mailto:bruno762ix@gmail.com">Central de Ajuda</a></li>
+                        <li><a href="mailto:bruno762ix@gmail.com">Contato de Suporte</a></li>
                     </ul>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <h5>Newsletter</h5>
-                    <p>Receba nossas novidades e ofertas exclusivas.</p>
-                    <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Seu email">
-                        <button class="btn btn-primary" type="button">Inscrever</button>
-                    </div>
                 </div>
             </div>
             <hr>
             <div class="row align-items-center">
                 <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0">&copy; 2025 VendaMax. Todos os direitos reservados.</p>
+                    <p class="mb-0">&copy; 2025 PereiraCode. Todos os direitos reservados.</p>
                 </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <div class="payment-methods">
-                        <i class="fab fa-cc-visa me-2"></i>
-                        <i class="fab fa-cc-mastercard me-2"></i>
-                        <i class="fab fa-cc-amex me-2"></i>
-                        <i class="fab fa-cc-paypal"></i>
-                    </div>
-                </div>
+
             </div>
         </div>
     </footer>

@@ -36,6 +36,12 @@
                       <li><a class="dropdown-item" href="<?php echo INCLUDE_PATH_PAINEL; ?>pages/editar-banner">Editar Banner</a></li>
                     </ul>
                   </div>
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Mensagens</button>
+                    <ul class="dropdown-menu dropdown-menu-animated">
+                      <li><a class="dropdown-item" href="<?php echo INCLUDE_PATH_PAINEL; ?>pages/mensagens">Mensagens</a></li>
+                    </ul>
+                  </div>
               <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Planos</button>
                 <ul class="dropdown-menu dropdown-menu-animated">
@@ -50,6 +56,12 @@
                   <li><a class="dropdown-item" href="<?php echo INCLUDE_PATH_PAINEL; ?>pages/cadastro-login">Cadastrar Login</a></li>
                   <li><a class="dropdown-item" href="<?php echo INCLUDE_PATH_PAINEL; ?>pages/editar-loginAny">Editar Login</a></li>
                   <li><a class="dropdown-item" href="<?php echo INCLUDE_PATH_PAINEL; ?>pages/listar-login">Listar Logins</a></li>
+                </ul>
+              </div>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Contato</button>
+                <ul class="dropdown-menu dropdown-menu-animated">
+                  <li><a class="dropdown-item" href="<?php echo INCLUDE_PATH_PAINEL; ?>pages/editar-contatos">Editar Contatos</a></li>
                 </ul>
               </div>
               
