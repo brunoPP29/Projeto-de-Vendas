@@ -61,7 +61,7 @@
 
     if (isset($_POST['editar'])) {
       $idEditar = $_POST['idDeletar'];
-      echo '<script>window.location.href="'.INCLUDE_PATH_PAINEL.'editar-login?id='.$idEditar.'";</script>';
+      echo '<script>window.location.href="'.INCLUDE_PATH_PAINEL.'/pages/editar-login?id='.$idEditar.'";</script>';
     }
 
     if (isset($_POST['acaoDeletar']) && isset($_POST['idDeletar'])) {

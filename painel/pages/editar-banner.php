@@ -19,27 +19,36 @@
     if (isset($_POST['acao'])) {
       $titleUpdate = $_POST['title'] ?? $banner[0]['title'];
       $subTitleUpdate = $_POST['subtitle'] ?? $banner[0]['subtitle'];
-      $image = $_FILES['image'] ?? $banner[0]['image'];
       $imageOriginal = $banner[0]['image'];
 
-      $imageNome = Painel::uploadFileBanner($image);
+      // Check if a new image was uploaded
+      if (isset($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK && $_FILES['image']['name'] != '') {
+        $imageNome = Painel::uploadFileBanner($_FILES['image']);
+        // Remove old image only if a new one was uploaded
+        if ($imageNome && $imageNome != $imageOriginal) {
+          if (file_exists(BASE_DIR_PAINEL.'/uploadsBanner/'.$imageOriginal)) {
+            unlink(BASE_DIR_PAINEL.'/uploadsBanner/'.$imageOriginal);
+          }
+        }
+      } else {
+        $imageNome = $imageOriginal;
+      }
 
       $sql = MySql::conectar()->prepare("UPDATE `tb_admin.banner` SET title = ?, subtitle = ?, image = ? WHERE id = 1");
-    $sql->execute(array($titleUpdate, $subTitleUpdate, $imageNome));
+      $sql->execute(array($titleUpdate, $subTitleUpdate, $imageNome));
         
-        if ($sql->rowCount() == 1) {
-            unlink(BASE_DIR_PAINEL.'/uploadsBanner/'.$imageOriginal); // Remove a imagem antiga
-          Painel::alertSucesso('Banner atualizado com sucesso!');
-          echo '<div class="alert alert-warning">
-          <i class="bi bi-clock-history me-2"></i>Você será redirecionado para a página incial em alguns segundos.
-        </div>';
-          ob_flush();
-          flush();
-          sleep(3);
-          echo '<script>window.location.href = "'.INCLUDE_PATH_PAINEL.'";</script>';
-        } else {
-          Painel::alertErro('Erro ao atualizar funcionário!');
-        }
+      if ($sql->rowCount() == 1) {
+        Painel::alertSucesso('Banner atualizado com sucesso!');
+        echo '<div class="alert alert-warning">
+        <i class="bi bi-clock-history me-2"></i>Você será redirecionado para a página incial em alguns segundos.
+      </div>';
+        ob_flush();
+        flush();
+        sleep(3);
+        echo '<script>window.location.href = "'.INCLUDE_PATH_PAINEL.'pages/editar-banner";</script>';
+      } else {
+        Painel::alertErro('Erro ao atualizar funcionário!');
+      }
 
     }
   
@@ -74,11 +83,13 @@
           <label for="bg" class="form-label">Background</label>
           <div class="input-group">
             <span class="input-group-text"><i class="bi bi-files"></i></span>
-            <input type="file" class="form-control" id="background" name="image"required>
+            <input type="file" class="form-control" id="background" name="image">
           </div>
         </div>
 
-        <button style="color: black !important; border: 1px solid black !important;" name="acao" type="submit" class="btn btn-primary w-100"><i class="bi bi-save me-2"></i>Atualizar Login</button>
+        <button type="submit" name="acao" class="btn btn-success">
+          <i class="bi bi-check-circle me-1"></i>Salvar Alterações
+        </button>      
       </form>
     </div>
   </div>

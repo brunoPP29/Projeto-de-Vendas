@@ -51,7 +51,7 @@
         if ($sql->rowCount() == 1) {
           Painel::alertSucesso('Plano atualizado com sucesso!');
           echo '<div class="alert alert-warning">
-          <i class="bi bi-clock-history me-2"></i>Você será redirecionado para a página de edição de Plano em alguns segundos.
+          <i class="bi bi-clock-history me-2"></i>Você será redirecionado para a página de edição de plano em alguns segundos.
         </div>';
           ob_flush();
           flush();

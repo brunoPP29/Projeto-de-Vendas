@@ -19,13 +19,18 @@
           $update = MySql::conectar()->prepare("UPDATE `tb_admin.contatoInfo` SET email = ?, zap = ?, insta = ? WHERE id = ?");
           $update->execute([$email, $zap, $insta, $info['id']]);
 
-          if ($update->rowCount() > 0) {
-            Painel::alertSucesso('Informações atualizadas com sucesso!');
-            echo '<script>window.location.href="' . INCLUDE_PATH_PAINEL . 'pages/editar-contatos";</script>';
-            exit;
-          } else {
-            Painel::alertErro('Nenhuma informação foi alterada.');
-          }
+          if ($update->rowCount() == 1) {
+          Painel::alertSucesso('Contato atualizado com sucesso!');
+          echo '<div class="alert alert-warning">
+          <i class="bi bi-clock-history me-2"></i>Você será redirecionado para a página de edição de contato em alguns segundos.
+        </div>';
+          ob_flush();
+          flush();
+          sleep(3);
+          echo '<script>window.location.href = "'.INCLUDE_PATH_PAINEL.'/pages/editar-contatos";</script>';
+        } else {
+          Painel::alertErro('Erro ao atualizar funcionário!');
+        }
         }
       ?>
 

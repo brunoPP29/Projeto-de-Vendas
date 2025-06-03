@@ -159,7 +159,13 @@ include('config.php');
                                 <li><i class="fas fa-check me-2 text-primary"></i><?php echo $value['item3']; ?></li>
                                 <li><i class="fas fa-check me-2 text-primary"></i><?php echo $value['item4']; ?></li>
                             </ul>
-                            <a href="#" class="btn btn-outline-primary mt-auto">Contratar</a>
+                            <?php
+                                if (isset($_POST['contratar'])) {
+                                    include('./contato.php');
+                                }
+                            
+                            ?>
+                            <button name="contratar" class="btn btn-outline-primary mt-auto">Contratar</button>
                         </div>
                     </div>
                 </div>
@@ -172,7 +178,7 @@ include('config.php');
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <h2 class="section-title">Entre em Contato</h2>
+                    <h2 class="section-title">Quero um projeto!</h2>
                     <p class="mb-4">Estamos prontos para atender suas necessidades e responder suas dúvidas.</p>
                     <form method="post">
                         <div class="mb-3">
@@ -185,7 +191,7 @@ include('config.php');
                         <label for="email" class="form-label">Qual o assunto?</label>
                             <select name="assunto" class="form-select">
                                 <option selected>Selecione o assunto</option>
-                                <option>Dúvidas sobre planos</option>
+                                <option>Preciso de um projeto</option>
                                 <option>Suporte técnico</option>
                                 <option>Outros</option>
                             </select>
@@ -220,7 +226,7 @@ include('config.php');
                             </div>
                             <div>
                                 <h5>Whatsapp</h5>
-                                <a style="color: var(--text-muted); text-decoration: underline;" href="https://wa.me/<?php echo $info['zap']; ?>">Clique aqui para enviar uma menagem!</a>
+                                <a style="color: var(--text-muted); text-decoration: none;" href="https://wa.me/<?php echo $info['zap']; ?>">Clique aqui para enviar uma menagem!</a>
                             </div>
                         </div>
                         <div class="d-flex mb-3">
@@ -229,7 +235,7 @@ include('config.php');
                             </div>
                             <div>
                                 <h5>Email</h5>
-                                <a style="color: var(--text-muted); text-decoration: underline;" href="mailto:<?php echo $info['email'];    ?>" >Envie um email aqui</a>
+                                <a style="color: var(--text-muted); text-decoration: none;" href="mailto:<?php echo $info['email'];    ?>" >Envie um email aqui</a>
                             </div>
                         </div>
                             <div class="d-flex mb-3">
@@ -238,7 +244,7 @@ include('config.php');
                                 </div>
                                 <div>
                                     <h5>Instagram</h5>
-                                    <a style="color: var(--text-muted); text-decoration: underline;" href="https://instagram.com/<?php echo trim(str_replace('@', '', $info['insta'])); ?>">Siga-nos no Instagram</a>
+                                    <a style="color: var(--text-muted); text-decoration: none;" href="https://instagram.com/<?php echo trim(str_replace('@', '', $info['insta'])); ?>">Siga-nos no Instagram</a>
                                 </div>
                             </div>
                         </div>
