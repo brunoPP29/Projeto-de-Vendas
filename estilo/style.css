@@ -443,6 +443,103 @@ body {
   transform: translateY(-2px);
 }
 
+.portfolio-bg-light-unique {
+    background: linear-gradient(135deg, #001028 0%, #000411 100%);
+}
+
+.portfolio-container-unique {
+    /* Pode adicionar padding ou max-width específico se necessário */
+}
+
+.portfolio-title-unique {
+    color: #ffffff; /* Cor escura para o título */
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+/* Linha decorativa abaixo do título */
+.portfolio-title-unique::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #0d6efd; /* Azul Bootstrap */
+    bottom: 0;
+    left: calc(50% - 30px);
+}
+
+.portfolio-grid-unique {
+    /* Estilos para o grid, se necessário */
+}
+
+.portfolio-item-col-unique {
+    /* Espaçamento ou estilos para a coluna */
+}
+
+.portfolio-card-unique {
+    border: none; /* Remove a borda padrão do card */
+    border-radius: 10px; /* Bordas levemente arredondadas */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; /* Garante que a imagem não ultrapasse as bordas arredondadas */
+}
+
+.portfolio-card-unique:hover {
+    transform: translateY(-5px); /* Efeito sutil de elevação */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important; /* Sombra mais pronunciada no hover */
+}
+
+.portfolio-img-unique {
+    /* A imagem já ocupa o topo do card */
+    aspect-ratio: 4 / 3; /* Proporção comum para imagens de portfólio */
+    object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+}
+
+.portfolio-card-body-unique {
+    padding: 1.5rem; /* Espaçamento interno do corpo do card */
+}
+
+.portfolio-project-title-unique {
+    color: #ffffff;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.portfolio-project-desc-unique {
+    color: #6c757d; /* Cinza secundário para descrição */
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.portfolio-card-footer-unique {
+    padding-top: 1rem;
+    border-top: 1px solid #eee; /* Linha sutil separando o footer */
+}
+
+.portfolio-link-btn-unique {
+    border-radius: 50px; /* Botões arredondados */
+    padding: 0.375rem 0.85rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.portfolio-link-btn-unique i {
+    vertical-align: middle;
+    margin-left: 2px;
+    margin-right: -2px; /* Ajuste fino para ícones */
+}
+
+/* Estilos específicos para botões (opcional, pode usar classes Bootstrap diretamente) */
+.portfolio-view-btn-unique {
+    /* Estilos específicos para o botão 'Ver Projeto' */
+}
+
+.portfolio-code-btn-unique {
+    /* Estilos específicos para o botão 'Código' */
+} 
+
 /* Responsividade */
 @media (max-width: 992px) {
   .plano-destaque {

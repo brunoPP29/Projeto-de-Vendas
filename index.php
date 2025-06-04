@@ -139,59 +139,60 @@ if (isset($_GET['url'])) {
     </section>
     <?php } } ?>
 
-    <!-- Seção de planos -->
-    <section class="planos py-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title">Nossos Planos</h2>
-                <p class="section-subtitle">Escolha o plano ideal para o seu negócio</p>
-            </div>
-            <div class="row">
-                <!-- Plano Básico -->
-                 <?php
-                    $sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.planos`");
-                    $sql->execute();
-                    $planos = $sql->fetchAll();
-                    if (!$planos) {
-                        echo '<div class="alert alert-danger">Nenhum plano encontrado!</div>';
-                        exit;
-                    }else {
-                        foreach ($planos as $key => $value) {
-                            # code...
-                    
-                 
-                 ?>
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 plano-card">
-                        <div class="card-header text-center py-3">
-                            <h3 class="plano-titulo"><?php echo $value['nome']; ?></h3>                       
-                        </div>
-                        <div class="card-body d-flex flex-column">
-                            <h4 class="card-price text-center">R$
-                                <?php echo number_format($value['valor'], 2, ',', '.'); ?>    
+
+    <section id="portfolio-section-unique" class="py-5 portfolio-bg-light-unique">
+    <div class="container portfolio-container-unique">
+        <h2 class="text-center mb-5 portfolio-title-unique">Meus Projetos</h2>
+
+        <div class="row g-4 portfolio-grid-unique">
+
+<?php
+
+    $sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.projetos`");
+    $sql->execute();
+
+
+    $projeto = $sql->fetchAll();
+    foreach ($projeto as $key => $value) {
+        $linkgit = $value['linkgit'];
+        $linksite = $value['linksite'];
+        # code...
+
+
+?>
+
+            <!-- Projeto 1 -->
+            <div class="col-lg-4 col-md-6 portfolio-item-col-unique">
+                <div class="card h-100 shadow-sm portfolio-card-unique portfolio-card-1-unique">
+                    <img src="<?php echo INCLUDE_PATH_PAINEL ?>uploadsProj/<?php  echo  $value['img'];    ?>" class="card-img-top portfolio-img-unique" alt="Visualização do Projeto 1">
+                    <div class="card-body d-flex flex-column portfolio-card-body-unique">
+                        <h5 class="card-title portfolio-project-title-unique"><?php echo $value['nome']?></h5>
+                        <p class="card-text portfolio-project-desc-unique flex-grow-1"><?php echo $value['descricao']?></p>
+                        <div class="mt-auto portfolio-card-footer-unique text-center">
+                            <?php
+                            
+                            if ($linksite) {
+                                echo '<a href="'.$linksite.'" class="btn btn-outline-primary btn-sm portfolio-link-btn-unique portfolio-view-btn-unique me-2">Ver Projeto <i class="bi bi-arrow-right-short"></i></a>';
+                            }
+                            if ($linkgit) {
+                                echo '<a href="'.$linkgit.'" class="btn btn-outline-secondary btn-sm portfolio-link-btn-unique portfolio-code-btn-unique"><i class="bi bi-github"></i> Código</a>';
+                            }
+                             
+                                
                             
                             
-                            <span>/vitalício</span></h4>
-                            <ul class="list-unstyled mt-3 mb-4">
-                                <li><i class="fas fa-check me-2 text-primary"></i><?php echo $value['item1']; ?></li>
-                                <li><i class="fas fa-check me-2 text-primary"></i><?php echo $value['item2']; ?></li>
-                                <li><i class="fas fa-check me-2 text-primary"></i><?php echo $value['item3']; ?></li>
-                                <li><i class="fas fa-check me-2 text-primary"></i><?php echo $value['item4']; ?></li>
-                            </ul>
-                            <form method="post">
-                                <?php if (isset($_POST['contratar'])) {
-                                    echo "<script>window.location.href='" . INCLUDE_PATH . "contato';</script>";
-                                    exit;
-                                    # code...
-                                }?>
-                            <button name="contratar" class="btn btn-outline-primary mt-auto">Contratar</button>
-                            </form>
+                            ?>
                         </div>
                     </div>
                 </div>
-                <?php } } ?>
             </div>
-    </section>
+                            <?php  } ?>
+
+            <!-- Adicione mais projetos aqui seguindo o mesmo padrão -->
+
+        </div>
+    </div>
+</section>
 
     <!-- Seção de contato -->
     <section class="contato py-5">
@@ -223,6 +224,7 @@ if (isset($_GET['url'])) {
                         <button name="acao" type="submit" class="btn btn-primary">Enviar mensagem</button>
                     </form>
                 </div>
+
 
 
 
