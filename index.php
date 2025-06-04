@@ -124,7 +124,11 @@ if (isset($_GET['url'])) {
                     <h1 class="display-5 fw-bold"><?php  echo $value['title']   ?></h1>
                     <p class="lead"><?php  echo $value['subtitle']   ?></p>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                        <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Contratar agora</button>
+
+                        <form method="post">
+
+                            <button name="contratar" type="submit" class="btn btn-primary btn-lg px-4 me-md-2">Contratar agora</button>
+                        </form>
                     </div>
                 </div>
                 <div style="margin-top: 15px;" class="col-md-6">
@@ -174,13 +178,14 @@ if (isset($_GET['url'])) {
                                 <li><i class="fas fa-check me-2 text-primary"></i><?php echo $value['item3']; ?></li>
                                 <li><i class="fas fa-check me-2 text-primary"></i><?php echo $value['item4']; ?></li>
                             </ul>
-                            <?php
-                                if (isset($_POST['contratar'])) {
-                                    include('./contato.php');
-                                }
-                            
-                            ?>
+                            <form method="post">
+                                <?php if (isset($_POST['contratar'])) {
+                                    echo "<script>window.location.href='" . INCLUDE_PATH . "contato';</script>";
+                                    exit;
+                                    # code...
+                                }?>
                             <button name="contratar" class="btn btn-outline-primary mt-auto">Contratar</button>
+                            </form>
                         </div>
                     </div>
                 </div>
