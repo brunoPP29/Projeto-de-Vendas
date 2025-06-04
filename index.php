@@ -2,6 +2,9 @@
 <?php
 
 include('config.php');
+
+
+
 ?>
 <html lang="pt-br">
 <head>
@@ -13,8 +16,20 @@ include('config.php');
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- CSS Personalizado -->
-    <link rel="stylesheet" href="./estilo/style.css">
+    <link rel="stylesheet" href="<?php echo INCLUDE_PATH; ?>estilo/style.css">
 </head>
+<?php   
+if (isset($_GET['url'])) {
+    $url = explode('/', $_GET['url']);
+    if ($url[0] == 'contato') {
+        include('contato.php');
+        die();
+}
+
+    }
+
+
+?>
 <body>
     <!-- Header com barra de navegação -->
     <header class="header-dark">
@@ -113,7 +128,7 @@ include('config.php');
                     </div>
                 </div>
                 <div style="margin-top: 15px;" class="col-md-6">
-                    <img src="./painel/uploadsBanner/<?php  echo $value['image']   ?>" class="img-fluid rounded banner-img" alt="Banner promocional">
+                    <img src="<?php echo INCLUDE_PATH?>painel/uploadsBanner/<?php  echo $value['image']   ?>" class="img-fluid rounded banner-img" alt="Banner promocional">
                 </div>
             </div>
         </div>
