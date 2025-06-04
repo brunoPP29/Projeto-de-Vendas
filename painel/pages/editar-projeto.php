@@ -53,7 +53,7 @@
         sleep(3);
         echo '<script>window.location.href = "'.INCLUDE_PATH_PAINEL.'pages/editar-projetoAny";</script>';
       } else {
-        Painel::alertErro('Erro ao atualizar funcionário!');
+        Painel::alertErro('Erro ao atualizar projeto!');
       }
     }
 
